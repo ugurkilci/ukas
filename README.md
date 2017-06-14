@@ -22,3 +22,10 @@ include 'ukas.php';</pre></code>
 
 # Html Kayıt Formu
 <img src="https://raw.githubusercontent.com/ugurkilci/ukas/master/kayit.jpg">
+
+# Önemli Uyarı
+Eğer "mail var (true)" yaparsanız "ukas_kayit();" dan önce "ukas_mail();" eklemeniz gerek aksi halde hata alırsınız.
+
+Örnek:
+<pre>ukas_mail("bizimmailimiz@gmail.com", "Konumuz", "Mesajımız");
+// Bizim mailimiz, Konumuz, Mesajımız</pre>
