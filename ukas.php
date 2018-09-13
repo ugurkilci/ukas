@@ -5,12 +5,16 @@
 	 * Ukas
 	 * 
 	 * @author Uğur KILCI
-	 * @version 1.0
+	 * @version 1.1
 	 * 
 	 * @github ugurkilci
+	 * @instagram ugur2nd
 	 * @twitter ugur2nd
+	 * 
 	 *
 	*/
+
+	$base = "http://localhost/";
 
 	function reptr($text) { // seo link yapısı
 	    $text     = trim($text);
