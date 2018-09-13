@@ -1,6 +1,8 @@
 # Ukas
 Hızlı ve kolay üyelik sistemi
 
+Version: 1.1
+
 Her hangi bir projede mutlaka üyelik sistemi oluyor ve her seferinde üyelik sistemi kodlamaktan ciğerim soldu. Bu yüzden basit bir framework yazdım. Bunu sayesinde tonlarca kod yapmaktan kurtuluyorsunuz. Maksimum 5 dakika da sistemi kuruyorsunuz. Bu da muazzam bir şey tabii ki. :)
 
 # [Kurulum Bilgileri]
