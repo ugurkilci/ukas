@@ -1,0 +1,4 @@
+RewriteEngine On
+ 
+RewriteRule ^valide$ index.php [QSA,L]
+RewriteRule ^uyelik$ uyelik.php [QSA,L]
