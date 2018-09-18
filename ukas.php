@@ -98,7 +98,7 @@
 	    
 	    if (isset($_POST["giris"])) { // Giriş yapılmışsa
 
-	        $kadi  = htmlspecialchars(trim($_POST["kadi"])); // Kullanıcı adı
+	        $kadi  = htmlspecialchars(trim(str_replace(" ", "", $_POST["kadi"]))); // Kullanıcı adı
 	        $sifre = md5(sha1($_POST["sifre"])); // Şifre
 
 	        if (empty($kadi) || empty($sifre)) { // Eğer boş bırakıldıysa
@@ -154,7 +154,7 @@
 	    if (isset($_POST["kayit"])) { // Kayıt Ol
 
 	        $isim  			= htmlspecialchars(trim($_POST["adsoyad"])); 	// Ad Soyad
-	        $kadi  			= htmlspecialchars(trim($_POST["kadi"])); 		// Kullanıcı Adı
+	        $kadi  			= htmlspecialchars(trim(str_replace(" ", "", $_POST["kadi"]))); 		// Kullanıcı Adı
 	        $sifre  		= htmlspecialchars(trim($_POST["sifre"])); 		// Şifre
 	        $sifret  		= htmlspecialchars(trim($_POST["sifret"])); 	// Şifre Tekrar
 	        $mail  			= htmlspecialchars(trim($_POST["eposta"])); 	// E-Posta
