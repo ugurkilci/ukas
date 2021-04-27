@@ -113,7 +113,10 @@
 	            $rowcount = $uyecek -> rowCount();
 	            
 	            if ($rowcount) { // Giriş yapılmışsa
-	                
+	                // CSRF Kontrolü - Forma token eklemeyi unutma!
+			if (!isset($_POST["_token"])) { die('Token bulunamadı!'); }
+			if ($_POST["_token"] !== $_SESSION["_token"]) { die('Hak yeme hack yeme!'); }
+			    
 	                $_SESSION["uye_id"] 			= $fetch["uye_id"]; 		// Üye id
 	                $_SESSION["uye_adsoyad"] 		= $fetch["uye_adsoyad"]; 	// Üye adı soyadı
 	                $_SESSION["uye_kadi"] 			= $fetch["uye_kadi"]; 		// Üye kullanıcı adı
@@ -141,7 +144,7 @@
 		$ukas_mesaj 		= $ukas_mesajx;
 	}
 
-	function ukas_kayit($ukas_ayar, $ukas_bosbirakilmauyarisi, $ukas_mailvarsamesaji, $ukas_kadivarmesaji, $ukas_kayitbasarili, $ukas_yonlendir, $ukas_kadisifrehatali, $ukas_kayitbasarisiz, $ukas_sifreeslesmiyor, $ukas_sahtemailuyarisi, $mailyolla) {
+	function ukas_kayit($ukas_ayar, $ukas_bosbirakilmauyarisi, $ukas_mailvarsamesaji, $ukas_kadivarmesaji, $ukas_kayitbasarili, $ukas_yonlendir, $ukas_kadisifrehatali, $ukas_kayitbasarisiz, $ukas_sifreeslesmiyor, $ukas_sahtemailuyarisi) {
 		// Ayar dosyası, Boş bırakma uyarısı, Mail mevcutsa, Kullanıcı adı mevcutsa, Kayıt başarılıysa, Kayıt yaptıktan sonra yönlendirilecek adres, Kullanıcı adı veya şifre hatalıysa, Kayıt başarısızsa, Şifreler eşleşmiyorsa, Eğer mail gerçek değilse, Mail gönderilsin mi?
 		// "ayar.php", "<p>Lütfen boş bırakmayınız!</p>", "<p>Böyle bir eposta mevcut! Lütfen başka bir tane deneyiniz!</p>", "<p>Böyle bir kullanıcı adı mevcut! Lütfen başka bir tane deneyiniz!</p>", "<p>Başarıyla kaydoldun! :)</p>", "index.php", "<p>Kullanıcı adı veya şifre hatalı!</p>", "<p>Kayıt başarısız!</p>", "<p>Şifreniz bir birine eşleşmiyor!</p>", "<p>Lütfen gerçek bir eposta giriniz!</p>", false
 
@@ -164,6 +167,10 @@
 	        if (empty($isim) || empty($kadi) || empty($sifre) || empty($sifret) || empty($mail)) { // Boş bırakılmışsa
 				echo $ukas_bosbirakilmauyarisi; // Uyarı mesajı ver
 	        }else{ // Boş bırakılmamışsa
+			
+			// CSRF Kontrolü - Forma token eklemeyi unutma!
+			if (!isset($_POST["_token"])) { die('Token bulunamadı!'); }
+			if ($_POST["_token"] !== $_SESSION["_token"]) { die('Hak yeme hack yeme!'); }
 
 	            $kontrol_et = epostakontrol($mail); // Maili kontrol et
 	            
@@ -216,13 +223,6 @@
 										echo $ukas_kayitbasarili; // Kayıt başarılıysa başarılı yazdır. :D
 								  		header("REFRESH:2;URL=" . $ukas_yonlendir); // Kayıt yaptıktan sonra yönlendir
 
-								  		if ($mailyolla == true) {
-								  			// Mail yollama aktif
-								  			$headers 	= 'From: ' . $ukas_benimmailimx . "rn";
-											mail($mail, $ukas_konux, $ukas_mesajx, $headers);
-								  		}elseif ($mailyolla == false){
-								  			// Mail yollama pasif
-								  		}
 								  	}else{
 						                echo $ukas_kadisifrehatali;
 						            }
