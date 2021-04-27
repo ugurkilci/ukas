@@ -11,4 +11,11 @@
 	}catch(PDOExeption $error){
 		echo $error->getMessage();
 	}
+
+	// CSRF Token
+	if ($_SESSION) {
+	  if (!isset($_POST["_token"])) {
+	    $_SESSION["_token"] = md5(time().rand(0,99999999));
+	  }
+	}
 ?>
