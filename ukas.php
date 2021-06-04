@@ -114,8 +114,8 @@
 	            
 	            if ($rowcount) { // Giriş yapılmışsa
 	                // CSRF Kontrolü - Forma token eklemeyi unutma!
-			if (!isset($_POST["_token"])) { die('Token bulunamadı!'); }
-			if ($_POST["_token"] !== $_SESSION["_token"]) { die('Hak yeme hack yeme!'); }
+			/*if (!isset($_POST["_token"])) { die('Token bulunamadı!'); }
+			if ($_POST["_token"] !== $_SESSION["_token"]) { die('Hak yeme hack yeme!'); }*/
 			    
 	                $_SESSION["uye_id"] 			= $fetch["uye_id"]; 		// Üye id
 	                $_SESSION["uye_adsoyad"] 		= $fetch["uye_adsoyad"]; 	// Üye adı soyadı
@@ -169,8 +169,8 @@
 	        }else{ // Boş bırakılmamışsa
 			
 			// CSRF Kontrolü - Forma token eklemeyi unutma!
-			if (!isset($_POST["_token"])) { die('Token bulunamadı!'); }
-			if ($_POST["_token"] !== $_SESSION["_token"]) { die('Hak yeme hack yeme!'); }
+			/*if (!isset($_POST["_token"])) { die('Token bulunamadı!'); }
+			if ($_POST["_token"] !== $_SESSION["_token"]) { die('Hak yeme hack yeme!'); }*/
 
 	            $kontrol_et = epostakontrol($mail); // Maili kontrol et
 	            
