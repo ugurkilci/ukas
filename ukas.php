@@ -5,7 +5,7 @@
 	 * Ukas
 	 * 
 	 * @author Uğur KILCI
-	 * @version 1.1
+	 * @version 1.2
 	 * 
 	 * @github ugurkilci
 	 * @instagram ugur2nd
@@ -88,11 +88,11 @@
 	    }
 	}
 
-	function ukas_giris($ukas_ayar, $ukas_yonlendir, $ukas_uyariyazisi, $ukas_hatayazisi) { 
+	function ukas_giris($ukas_yonlendir, $ukas_uyariyazisi, $ukas_hatayazisi) { 
 		// Ayar dosyası, Giriş yapıldıktan sonra yönlendirilecek yer, Uyarı mesajı, Hata mesajı
 		// "ayar.php", "index.php", "<p>Lütfen boş bırakmayınız!</p>", "<p>Kullanıcı adı veya şifre hatalı!</p>"
 
-		include($ukas_ayar); // Ayar dosyası
+		global $db;
 
 	    $uyecek = $db -> prepare("SELECT * FROM uyeler WHERE uye_kadi=? && uye_sifre=?");
 	    
@@ -144,7 +144,7 @@
 		$ukas_mesaj 		= $ukas_mesajx;
 	}
 
-	function ukas_kayit($ukas_ayar, $ukas_bosbirakilmauyarisi, $ukas_mailvarsamesaji, $ukas_kadivarmesaji, $ukas_kayitbasarili, $ukas_yonlendir, $ukas_kadisifrehatali, $ukas_kayitbasarisiz, $ukas_sifreeslesmiyor, $ukas_sahtemailuyarisi) {
+	function ukas_kayit($ukas_bosbirakilmauyarisi, $ukas_mailvarsamesaji, $ukas_kadivarmesaji, $ukas_kayitbasarili, $ukas_yonlendir, $ukas_kadisifrehatali, $ukas_kayitbasarisiz, $ukas_sifreeslesmiyor, $ukas_sahtemailuyarisi) {
 		// Ayar dosyası, Boş bırakma uyarısı, Mail mevcutsa, Kullanıcı adı mevcutsa, Kayıt başarılıysa, Kayıt yaptıktan sonra yönlendirilecek adres, Kullanıcı adı veya şifre hatalıysa, Kayıt başarısızsa, Şifreler eşleşmiyorsa, Eğer mail gerçek değilse, Mail gönderilsin mi?
 		// "ayar.php", "<p>Lütfen boş bırakmayınız!</p>", "<p>Böyle bir eposta mevcut! Lütfen başka bir tane deneyiniz!</p>", "<p>Böyle bir kullanıcı adı mevcut! Lütfen başka bir tane deneyiniz!</p>", "<p>Başarıyla kaydoldun! :)</p>", "index.php", "<p>Kullanıcı adı veya şifre hatalı!</p>", "<p>Kayıt başarısız!</p>", "<p>Şifreniz bir birine eşleşmiyor!</p>", "<p>Lütfen gerçek bir eposta giriniz!</p>", false
 
@@ -152,7 +152,7 @@
 		global $ukas_konux;
 		global $ukas_mesajx;
 
-		include($ukas_ayar); // Ayar dosyası
+		global $db; // Ayar dosyası
 
 	    if (isset($_POST["kayit"])) { // Kayıt Ol
 
@@ -267,11 +267,11 @@
 		}
 	}
 
-	function ukas_cikis($ukas_ayar, $ukas_cikisyonlendir){
+	function ukas_cikis($ukas_cikisyonlendir){
 		// Ayar dosyası, Çıkış yaptıktan sonra yönlendirilecek adres
 		// "ayar.php", "test.php"
 
-		include $ukas_ayar;
+		global $db;
 		session_destroy();
 		header("REFRESH:2;URL=" . $ukas_cikisyonlendir);
 	}
