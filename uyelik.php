@@ -57,9 +57,9 @@
                         <strong>Şifre:</strong>
                         <input type="password" class="form-control" name="sifre"><br />
                         <input type="hidden" name="_token" value="'.$_SESSION["_token"].'">
-                        <input type="submit" class="btn btn-block btn-secondary" name="giris" value="Giriş Yap">
+                        <input type="submit" class="btn btn-block btn-dark" name="giris" value="Giriş Yap">
                     </form>
-                    <a href="uyelik.php?p=kayit" class="btn btn-block btn-dark mt-3">Şimdi kayıt ol!</a>
+                    <a href="uyelik.php?p=kayit" class="btn btn-block btn-secondary mt-3">Şimdi kayıt ol!</a>
                     <hr>
                     <a href="index.php" class="text-dark"><small>&larr; Anasayfaya dön</small></a>';
                     }
