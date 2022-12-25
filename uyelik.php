@@ -19,7 +19,7 @@
                 ) {
                     echo '<p class="alert alert-warning">Lütfen boş bırakmayınız!</p>';
                 } else {
-                    if (filter_var($eposta, FILTER_VALIDATE_EMAIL)){ // :)
+                    if (filter_var($eposta, FILTER_VALIDATE_EMAIL)){ //  :)
                         $selectRow = $db -> prepare("SELECT * FROM uyeler WHERE
                             uye_eposta =:uye_eposta
                         ");
